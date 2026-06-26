@@ -10,7 +10,7 @@ cask "keycache" do
   desc "Key-value notes in your menu bar"
   homepage "https://github.com/moreiraeugenio/keycache"
 
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   app "Keycache.app"
 
