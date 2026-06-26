@@ -1,9 +1,9 @@
 cask "keycache" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.3.0"
-  sha256 arm:   "3fc0f0712659924988b52bec47f4f7b7f343718a8943b078236e4e1493670231",
-         intel: "0000000000000000000000000000000000000000000000000000000000000000"
+  version "0.4.0"
+  sha256 arm:   "fad0b7cc5ee9fa771b97004c871ffdae55efd2e2c694f3312c945b16430df868",
+         intel: "3b7169b4767ecf0406859e066c9a3850cde2fd60dfd585c1a04a09cc2485581f"
 
   url "https://github.com/moreiraeugenio/keycache/releases/download/v#{version}/Keycache-#{version}-#{arch}.dmg"
   name "Keycache"
