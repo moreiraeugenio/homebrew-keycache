@@ -17,10 +17,8 @@ cask "keycache" do
   # Strip com.apple.quarantine so the unsigned app launches without
   # macOS showing "Keycache.app is damaged and can't be opened."
   # Remove once the app ships signed + notarized.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Keycache.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-cr", "{{appdir}}/Keycache.app"]
   end
 
   zap trash: [
