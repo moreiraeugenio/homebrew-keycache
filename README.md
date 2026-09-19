@@ -32,6 +32,20 @@ brew untap moreiraeugenio/keycache
 
 After every tagged release on [`moreiraeugenio/keycache`](https://github.com/moreiraeugenio/keycache), the `homebrew-bump` job in that repo's release workflow opens a PR here bumping `Casks/keycache.rb` to the new version + per-arch `sha256`. Merging that PR ships the update to `brew upgrade` users.
 
+## Testing cask changes locally
+
+`brew` won't install or audit a cask from a file path, so point the installed tap at this working copy instead:
+
+```bash
+scripts/dev-tap.sh link      # swap the tap for a symlink to this repo (original is backed up)
+brew style moreiraeugenio/keycache/keycache
+brew audit --cask --strict moreiraeugenio/keycache/keycache
+brew reinstall --cask moreiraeugenio/keycache/keycache
+scripts/dev-tap.sh unlink    # restore the original tap
+```
+
+`scripts/dev-tap.sh status` shows which one is active.
+
 ## Notes
 
 - Keycache is currently distributed **unsigned**. macOS will show a Gatekeeper warning on first launch; right-click the app → **Open** to bypass. See the [Unsigned caveat](https://github.com/moreiraeugenio/keycache#unsigned-caveat) section in the main README.
